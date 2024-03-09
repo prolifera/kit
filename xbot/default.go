@@ -1,4 +1,4 @@
-package bot
+package xbot
 
 var defaultCli = &Client{}
 
