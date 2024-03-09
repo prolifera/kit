@@ -37,6 +37,10 @@ func NewRobot(token, secret, appKey, secretKey string) *Robot {
 	}
 }
 
+func InitDefault(token, secret string) {
+	defaultBot = NewRobot(token, secret, "", "")
+}
+
 func Default() *Robot {
 	if defaultBot != nil {
 		return defaultBot
