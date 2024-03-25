@@ -99,11 +99,15 @@ func (c *Client) FastSend(chatId int64, content string) {
 }
 
 func (c *Client) SendMsg(chatId int64, content string, ikm interface{}, isMarkdown bool) (*tgbotapi.Message, error) {
-	return c.SendMsgWithPhoto(chatId, content, ikm, "", "", "", isMarkdown, 0)
+	return c.SendMsgWithPhoto(chatId, content, ikm, "", "", "", isMarkdown, 0, 0)
+}
+
+func (c *Client) SendMsgWithThread(chatId int64, threadId int, content string, ikm interface{}, isMarkdown bool) (*tgbotapi.Message, error) {
+	return c.SendMsgWithPhoto(chatId, content, ikm, "", "", "", isMarkdown, 0, threadId)
 }
 
 func (c *Client) ReplyMsg(chatId int64, replyMsgId int, content string, ikm interface{}, isMarkdown bool) (*tgbotapi.Message, error) {
-	return c.SendMsgWithPhoto(chatId, content, ikm, "", "", "", isMarkdown, replyMsgId)
+	return c.SendMsgWithPhoto(chatId, content, ikm, "", "", "", isMarkdown, replyMsgId, 0)
 }
 
 func (c *Client) SendMedia(chatId int64, path string) (*tgbotapi.Message, error) {
@@ -155,7 +159,7 @@ func (c *Client) EditMsg(chatId int64, msgId int, content string, ikm *tgbotapi.
 	return err
 }
 
-func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{}, photoUrl string, photoFileId string, photoFilePath string, isMarkdown bool, replyMsgId int) (*tgbotapi.Message, error) {
+func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{}, photoUrl string, photoFileId string, photoFilePath string, isMarkdown bool, replyMsgId int, threadId int) (*tgbotapi.Message, error) {
 
 	c.CheckLimit(chatId)
 
@@ -169,7 +173,7 @@ func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{},
 		if isMarkdown {
 			_msg.ParseMode = tgbotapi.ModeMarkdownV2
 		}
-
+		_msg.MessageThreadID = threadId
 		//_msg. = true
 		//_msg.ReplyToMessageID = replyMsgId
 		msg = _msg
@@ -191,6 +195,7 @@ func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{},
 		if isMarkdown {
 			_msg.ParseMode = tgbotapi.ModeMarkdownV2
 		}
+		_msg.MessageThreadID = threadId
 		msg = _msg
 	}
 
