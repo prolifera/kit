@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tristan-club/kit/log"
+	"github.com/prolifera/kit/log"
 	"golang.org/x/crypto/sha3"
 )
 

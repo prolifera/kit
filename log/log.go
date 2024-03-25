@@ -1,9 +1,9 @@
 package log
 
 import (
+	"github.com/prolifera/kit/config"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
-	"github.com/tristan-club/kit/config"
 	"os"
 	"runtime"
 	"strconv"

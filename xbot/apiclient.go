@@ -169,8 +169,9 @@ func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{},
 		if isMarkdown {
 			_msg.ParseMode = tgbotapi.ModeMarkdownV2
 		}
-		_msg.DisableWebPagePreview = true
-		_msg.ReplyToMessageID = replyMsgId
+
+		//_msg. = true
+		//_msg.ReplyToMessageID = replyMsgId
 		msg = _msg
 	} else {
 		var file tgbotapi.RequestFileData
@@ -182,7 +183,7 @@ func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{},
 			file = tgbotapi.FilePath(photoFilePath)
 		}
 		_msg := tgbotapi.NewPhoto(chatId, file)
-		_msg.ReplyToMessageID = replyMsgId
+		//_msg.ReplyToMessageID = replyMsgId
 		_msg.Caption = content
 		if ikm != nil {
 			_msg.ReplyMarkup = ikm
