@@ -20,3 +20,9 @@ require (
 	github.com/shopspring/decimal v1.2.0 // indirect
 	golang.org/x/sys v0.8.0 // indirect
 )
+
+//replace (
+//	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1 => github.com/OvyFlash/telegram-bot-api master
+//)
+
+replace github.com/go-telegram-bot-api/telegram-bot-api/v5 => ./xbot/telegram-bot-api/
