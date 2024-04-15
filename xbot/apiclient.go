@@ -174,6 +174,9 @@ func (c *Client) SendMsgWithPhoto(chatId int64, content string, ikm interface{},
 			_msg.ParseMode = tgbotapi.ModeMarkdownV2
 		}
 		_msg.MessageThreadID = threadId
+		_msg.LinkPreviewOptions = tgbotapi.LinkPreviewOptions{
+			IsDisabled: true,
+		}
 		//_msg. = true
 		//_msg.ReplyToMessageID = replyMsgId
 		msg = _msg
